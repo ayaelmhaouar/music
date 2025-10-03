@@ -17,7 +17,7 @@ return new class extends Migration
     $table->string('artist');
     $table->string('album')->nullable();
     $table->string('genre')->nullable();
-    $table->string('file_url'); // chemin du fichier mp3
+    
             $table->timestamps();
         });
     }

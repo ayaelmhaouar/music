@@ -140,7 +140,7 @@
                 "tags": [
                     "Music"
                 ],
-                "summary": "Voir une musique avec sa playlist",
+                "summary": "Voir une musique",
                 "operationId": "c62b53bb526e5c9c2a9993f8b5165ac4",
                 "parameters": [
                     {
@@ -154,47 +154,30 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Musique trouvée avec sa playlist",
+                        "description": "Musique trouvée",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
                                         "id": {
                                             "type": "integer",
-                                            "example": 5
+                                            "example": 1
                                         },
                                         "title": {
                                             "type": "string",
-                                            "example": "Lo-Fi Beat"
+                                            "example": "Song 1"
                                         },
                                         "artist": {
                                             "type": "string",
-                                            "example": "DJ Relax"
+                                            "example": "Artist 1"
                                         },
                                         "album": {
                                             "type": "string",
-                                            "example": "Lo-Fi Collection"
+                                            "example": "Album 1"
                                         },
                                         "duration": {
                                             "type": "integer",
                                             "example": 180
-                                        },
-                                        "playlist": {
-                                            "properties": {
-                                                "id": {
-                                                    "type": "integer",
-                                                    "example": 1
-                                                },
-                                                "name": {
-                                                    "type": "string",
-                                                    "example": "Chill Vibes"
-                                                },
-                                                "user_id": {
-                                                    "type": "integer",
-                                                    "example": 2
-                                                }
-                                            },
-                                            "type": "object"
                                         }
                                     },
                                     "type": "object"

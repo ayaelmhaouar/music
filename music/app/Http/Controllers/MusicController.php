@@ -76,43 +76,38 @@ class MusicController extends Controller
             'artist' => 'required|string|max:255',
             'album' => 'nullable|string|max:255',
             'duration' => 'nullable|integer',
+             'file_url' => 'required|string|max:255',
         ]);
 
         $music = Music::create($request->all());
         return response()->json($music, 201);
     }
-/**
- * @OA\Get(
- *     path="/api/music/{id}",
- *     summary="Voir une musique avec sa playlist",
- *     tags={"Music"},
- *     @OA\Parameter(
- *         name="id",
- *         in="path",
- *         required=true,
- *         @OA\Schema(type="integer")
- *     ),
- *     @OA\Response(
- *         response=200,
- *         description="Musique trouvée avec sa playlist",
- *         @OA\JsonContent(
- *             type="object",
- *             @OA\Property(property="id", type="integer", example=5),
- *             @OA\Property(property="title", type="string", example="Lo-Fi Beat"),
- *             @OA\Property(property="artist", type="string", example="DJ Relax"),
- *             @OA\Property(property="album", type="string", example="Lo-Fi Collection"),
- *             @OA\Property(property="duration", type="integer", example=180),
- *             @OA\Property(
- *                 property="playlist",
- *                 type="object",
- *                 @OA\Property(property="id", type="integer", example=1),
- *                 @OA\Property(property="name", type="string", example="Chill Vibes"),
- *                 @OA\Property(property="user_id", type="integer", example=2)
- *             )
- *         )
- *     )
- * )
- */
+
+    /**
+     * @OA\Get(
+     *     path="/api/music/{id}",
+     *     summary="Voir une musique",
+     *     tags={"Music"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Musique trouvée",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="id", type="integer", example=1),
+     *             @OA\Property(property="title", type="string", example="Song 1"),
+     *             @OA\Property(property="artist", type="string", example="Artist 1"),
+     *             @OA\Property(property="album", type="string", example="Album 1"),
+     *             @OA\Property(property="duration", type="integer", example=180)
+     *         )
+     *     )
+     * )
+     */
     public function show(Music $music)
     {
         return response()->json($music, 200);
@@ -158,10 +153,13 @@ class MusicController extends Controller
             'title' => 'sometimes|required|string|max:255',
             'artist' => 'sometimes|required|string|max:255',
             'album' => 'nullable|string|max:255',
+          
             'duration' => 'nullable|integer',
+            'file_url' => 'sometimes|required|string|max:255',
         ]);
 
         $music->update($request->all());
+
         return response()->json($music, 200);
     }
 

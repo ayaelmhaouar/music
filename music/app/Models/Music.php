@@ -9,7 +9,7 @@ class Music extends Model
 {
     use HasFactory;
 
-    // Relation Many-to-Many avec Playlist
+   
     public function playlists()
     {
         return $this->belongsToMany(Playlist::class, 'playlist_music', 'music_id', 'playlist_id');
