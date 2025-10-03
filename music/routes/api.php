@@ -38,3 +38,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 
 Route::apiResource('playlists', PlaylistController::class);
+Route::apiResource('music', MusicController::class);
+Route::apiResource('playlists', PlaylistController::class);
+Route::apiResource('users', UserController::class);

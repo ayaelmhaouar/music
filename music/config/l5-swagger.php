@@ -315,4 +315,9 @@ return [
             'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
         ],
     ],
+    'annotations' => [
+    base_path('app/Swagger'), 
+    base_path('app'),
+
+],
 ];
