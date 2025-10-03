@@ -12,7 +12,12 @@ class PlaylistController extends Controller
      */
     public function index()
     {
-        //
+        return response()-<json(playlist::all(),200);
+
+ return response()->json([
+            ['id' => 1, 'name' => 'Playlist 1'],
+            ['id' => 2, 'name' => 'Playlist 2']
+        ]);
     }
 
     /**
@@ -28,7 +33,14 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $playlist = Playlist::create($request->all());
+        return response()->json($playlist, 201);
     }
 
     /**
@@ -36,7 +48,7 @@ class PlaylistController extends Controller
      */
     public function show(Playlist $playlist)
     {
-        //
+         return response()->json($playlist, 200);
     }
 
     /**
@@ -52,7 +64,13 @@ class PlaylistController extends Controller
      */
     public function update(Request $request, Playlist $playlist)
     {
-        //
+          $request->validate([
+            'name' => 'sometimes|required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $playlist->update($request->all());
+        return response()->json($playlist, 200);
     }
 
     /**
@@ -60,6 +78,7 @@ class PlaylistController extends Controller
      */
     public function destroy(Playlist $playlist)
     {
-        //
+         $playlist->delete();
+        return response()->json(null, 204);
     }
 }

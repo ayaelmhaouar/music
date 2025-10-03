@@ -11,7 +11,10 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable  implements LaratrustUser
 {
     use HasApiTokens, HasFactory, Notifiable ,HasRolesAndPermissions;
-;
+
+  public function playlists() {
+        return $this->hasMany(Playlist::class);
+    }
 
     /**
      * The attributes that are mass assignable.

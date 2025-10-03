@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('playlists', function (Blueprint $table) {
-            $table->id();
-             $table->string('name');  // Nom de la playlist
-            $table->text('description')->nullable();
+        Schema::create('playlist_music', function (Blueprint $table) {
+           
+               $table->id();
+        $table->foreignId('playlist_id')->constrained()->onDelete('cascade');
+        $table->foreignId('music_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('playlists');
+        Schema::dropIfExists('playlist_music');
     }
 };
